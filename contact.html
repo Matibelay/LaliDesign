@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nu Qunnami - Lali Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Hero section for Contact page */
+        .contact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/lal_lali1.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .contact-hero h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Main Contact Page Layout */
+        .contact-page {
+            background-color: #fff;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        /* Contact Info Column */
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .contact-info p {
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        .contact-details {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .contact-details i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+        .contact-details a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-details a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Map Placeholder */
+        .map-placeholder {
+            background: var(--bg-light);
+            border-radius: 8px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            border: 1px dashed #ddd;
+        }
+        .map-placeholder i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Form Styles (reusing from previous requests) */
+        .contact-form-wrapper {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* Animation Styles */
+        .hidden-anim { opacity: 0; transition: opacity 1s ease-out, transform 1s ease-out; }
+        .slide-in-left { transform: translateX(-50px); }
+        .slide-in-right { transform: translateX(50px); }
+        .show-anim { opacity: 1; transform: translate(0, 0); }
+    </style>
+</head>
+<body>
+    <!-- Header consistent with other pages -->
+    <header class="main-header">
+        <div class="header-container container">
+            <a href="index.html" class="logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Gabaa</a></li>
+                    <li><a href="about.html">Waa'ee Keenya</a></li>
+                    <li><a href="blog.html">Barruu</a></li>
+                    <li><a href="contact.html" class="active">Nu Qunnami</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                 <a href="account.html" class="user-account" aria-label="Account"><i class="far fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">1</span></a>
+                <button class="mobile-menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <h1>Nu Qunnami</h1>
+        </section>
+        
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> > <span>Nu Qunnami</span>
+            </div>
+        </div>
+
+        <section class="contact-page section-padding">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info hidden-anim slide-in-left">
+                        <h2>Karaa Kanaan Nu Dubbisaa</h2>
+                        <p>Yaada keessan dhagahuuf hawwii guddaa qabna! Gaaffii, yaada yookiin ajaja addaa qabduu? Unka kana guutaa yookiin karaa teessoo armaan gadiitiin nu qunnamaa.</p>
+                        <ul class="contact-details">
+                            <li><i class="fas fa-map-marker-alt"></i> Teessoo: Finfinnee, Itoophiyaa</li>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:+251912345678">+251 912 345 678</a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:info@lalidesign.com">info@lalidesign.com</a></li>
+                        </ul>
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Kaartaa Bakka Keenyaa</span>
+                            <!-- Real Google Map Embed (uncomment and replace src)
+                            <iframe src="YOUR_GOOGLE_MAPS_EMBED_LINK" width="100%" height="100%" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+                            -->
+                        </div>
+                    </div>
+                    <div class="contact-form-wrapper hidden-anim slide-in-right">
+                        <form class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="contact-name">Maqaa</label>
+                                <input type="text" id="contact-name" name="name" required>
+                                <div class="error-message">Mee maqaa keessan guutaa.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Imeelii</label>
+                                <input type="email" id="contact-email" name="email" required>
+                                <div class="error-message">Mee teessoo imeelii sirrii galchaa.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Mata Duree</label>
+                                <input type="text" id="contact-subject" name="subject" required>
+                                <div class="error-message">Mee mata duree ergaa keessanii ibsaa.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Ergaa</label>
+                                <textarea id="contact-message" name="message" rows="5" required></textarea>
+                                <div class="error-message">Mee ergaa keessan barreessaa.</div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Ergaa Ergi</button>
+                            </div>
+                            <div class="form-status" id="contact-success" style="display:none;">Galatoomaa! Ergaan keessan milkaa'inaan ergamera.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <!-- Footer content remains consistent -->
+    </footer>
+
+    <nav class="mobile-bottom-nav">
+        <!-- Mobile nav content remains consistent -->
+    </nav>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- SCROLL-IN ANIMATION SCRIPT ---
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-anim');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const hiddenElements = document.querySelectorAll('.hidden-anim');
+        hiddenElements.forEach((el) => scrollObserver.observe(el));
+
+        // --- CONTACT FORM VALIDATION SCRIPT ---
+        const form = document.querySelector('.contact-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                form.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('has-error');
+                });
+                form.querySelector('#contact-success').style.display = 'none';
+
+                // Validate Name
+                const name = form.querySelector('#contact-name');
+                if (!name.value.trim()) {
+                    name.closest('.form-group').classList.add('has-error');
+                    isValid = false;
+                }
+
+                // Validate Email
+                const email = form.querySelector('#contact-email');
+                const emailRegex = /^\S+@\S+\.\S+$/;
+                if (!email.value.trim() || !emailRegex.test(email.value)) {
+                    email.closest('.form-group').classList.add('has-error');
+                    isValid = false;
+                }
+
+                // Validate Subject
+                const subject = form.querySelector('#contact-subject');
+                if (!subject.value.trim()) {
+                    subject.closest('.form-group').classList.add('has-error');
+                    isValid = false;
+                }
+
+                // Validate Message
+                const message = form.querySelector('#contact-message');
+                if (!message.value.trim()) {
+                    message.closest('.form-group').classList.add('has-error');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    // On success, show message and reset form
+                    form.reset();
+                    const successMessage = form.querySelector('#contact-success');
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

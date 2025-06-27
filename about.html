@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waa'ee Keenya - Lali Design</title>
+    <!-- Head content from index.html -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Hero section for About page */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/lal_lali1.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mission, Vision, Values Section */
+        .mission-vision-section {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .mission-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .mission-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .mission-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Story Section (reusing some styles from index) */
+        .about-story-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .about-story-section .story-content {
+            flex: 1;
+        }
+        .about-story-section .story-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        .about-story-section .story-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .about-story-section {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation Styles (reused from index.html) */
+        .hidden-anim {
+            opacity: 0;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .slide-in-left { transform: translateX(-50px); }
+        .slide-in-right { transform: translateX(50px); }
+        .fade-in-up { transform: translateY(50px); }
+
+        .show-anim {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* Staggered animation for mission cards */
+        .mission-card.hidden-anim:nth-child(1) { transition-delay: 0.1s; }
+        .mission-card.hidden-anim:nth-child(2) { transition-delay: 0.2s; }
+        .mission-card.hidden-anim:nth-child(3) { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Header consistent with other pages -->
+    <header class="main-header">
+        <div class="header-container container">
+            <a href="index.html" class="logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Gabaa</a></li>
+                    <li><a href="about.html" class="active">Waa'ee Keenya</a></li>
+                    <li><a href="blog.html">Barruu</a></li>
+                    <li><a href="contact.html">Nu Qunnami</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                 <a href="account.html" class="user-account" aria-label="Account"><i class="far fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">1</span></a>
+                <button class="mobile-menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <h1>Seenaa Keenya</h1>
+                <p>Aadaa keenya faashinii ammayyaatiin kunuunsuu</p>
+            </div>
+        </section>
+
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> > 
+                <span>Waa'ee Keenya</span>
+            </div>
+        </div>
+
+        <section class="section-padding">
+            <div class="container about-story-section">
+                <div class="story-content hidden-anim slide-in-left">
+                    <h2>Seenaa Ka'umsa Keenya</h2>
+                    <p><strong>Gadi-jedhinnaan Eegalle...</strong><br> Laalii Diizaayin, kan hundeeffame bara 2010 diizaayinara Lalisee Mulugetaan, Finfinneetti hojii xiqqaadhaan eegale. Kaayyoon Lalisee riiqicha aartii uffata aadaa Oromoo fi faashinii ammayyaa gidduutti ijaaruu ture.</p>
+                    <p>Hojiin jaalalarratti hundaa'ee eegalame kun, aadaa ofii kunuunsuuf ture; har'a garuu dhaabbata hawaasummaa guddatee dagaage ta'uun, Oromiyaa keessatti hojjettoota harkaa 50 ol deeggaraa jira, akkasumas diizaayiniiwwan keenya addunyaaf dhiheessaa jirra.</p>
+                </div>
+                <div class="story-image hidden-anim slide-in-right">
+                    <img src="images/lal_lali1.jpg" alt="Hojjettuu harkaa Laalii Diizaayin" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-vision-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Kaayyoo fi Mul'ata Keenya</h2>
+                    <p>Waan itti amannuu fi waan galmaan gahuuf hojjennu.</p>
+                </div>
+                <div class="mission-grid">
+                    <div class="mission-card hidden-anim fade-in-up">
+                        <div class="mission-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Ergama Keenya</h3>
+                        <p>Aadaa uffataa Oromoo tiksuu fi kabajuu, akkasumas hojjettoota harkaa keenyaaf karaa faashinii haqaa qabuun jireenya itti fufiinsa qabu uumuu.</p>
+                    </div>
+                    <div class="mission-card hidden-anim fade-in-up">
+                        <div class="mission-icon"><i class="fas fa-eye"></i></div>
+                        <h3>Mul'ata Keenya</h3>
+                        <p>Addunyaa hojiin harka aadaa itti dinqisiifamu, fi kakuun aadaa karaa ibsa ammayyaatiin itti dagaagu arguu.</p>
+                    </div>
+                    <div class="mission-card hidden-anim fade-in-up">
+                        <div class="mission-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Duudhaalee Keenya</h3>
+                        <p>Jalqabummaa, Qulqullina, Itti fufiinsa, fi hojjettoota keenya hundaaf kaffaltii haqaa kennuu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+         <div class="container">
+            <!-- Footer content consistent with index.html -->
+        </div>
+    </footer>
+
+    <nav class="mobile-bottom-nav">
+        <!-- Mobile nav content consistent with index.html -->
+    </nav>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- SCROLL-IN ANIMATION SCRIPT ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-anim');
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        const hiddenElements = document.querySelectorAll('.hidden-anim');
+        hiddenElements.forEach((el) => observer.observe(el));
+    });
+    </script>
+</body>
+</html>

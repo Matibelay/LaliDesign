@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barruu - Lali Design</title>
+    <!-- Head content from index.html -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Hero section for Blog page */
+        .blog-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/lal_brand.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .blog-hero p {
+            font-size: 1.1rem;
+        }
+
+        /* Blog Grid and Card Styling */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .blog-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .blog-card-image {
+            height: 200px;
+        }
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .blog-card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-meta {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .blog-card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        .blog-card-content p {
+            color: #555;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .read-more {
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+        .blog-card a:hover .read-more {
+            color: var(--secondary-color);
+        }
+        
+        /* Animation Styles */
+        .hidden-anim {
+            opacity: 0;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-up { transform: translateY(50px); }
+        .show-anim { opacity: 1; transform: translateY(0); }
+
+        /* Staggered animation for blog cards */
+        .blog-card.hidden-anim:nth-child(1) { transition-delay: 0.1s; }
+        .blog-card.hidden-anim:nth-child(2) { transition-delay: 0.2s; }
+        .blog-card.hidden-anim:nth-child(3) { transition-delay: 0.3s; }
+        .blog-card.hidden-anim:nth-child(4) { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Header from index.html -->
+    <header class="main-header">
+        <div class="header-container container">
+            <a href="index.html" class="logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Gabaa</a></li>
+                    <li><a href="about.html">Waa'ee Keenya</a></li>
+                    <li><a href="blog.html" class="active">Barruu</a></li>
+                    <li><a href="contact.html">Nu Qunnami</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                 <a href="account.html" class="user-account" aria-label="Account"><i class="far fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">1</span></a>
+                <button class="mobile-menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <h1>Barruu Keenya</h1>
+            <p>Seenaawwan dhaalaa, ogummaa harkaa, fi aadaa keenyaa</p>
+        </section>
+
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> > 
+                <span>Barruu</span>
+            </div>
+        </div>
+
+        <section class="blog-page section-padding">
+            <div class="container">
+                <div class="blog-grid">
+                    <article class="blog-card hidden-anim fade-in-up">
+                        <a href="#">
+                            <div class="blog-card-image">
+                                <img src="images/lal_lali2.jpg" alt="The Lali Design workshop space">
+                            </div>
+                            <div class="blog-card-content">
+                                <p class="blog-card-meta">Fulbaana 15, 2024 • Iddoo Hojii</p>
+                                <h3>Iddoo Hojii Keenya: Bakka Aadaan Itti Bocamu</h3>
+                                <p>Bakki hojii keenya iddoo uffanni itti hodhamu qofa osoo hin taane, bakka ogummaan dhalootarraa dhalootatti itti darbuu fi jaalalli aadaaf qabnu itti lalisuudha...</p>
+                                <span class="read-more">Caalmaa Dubbisi →</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="blog-card hidden-anim fade-in-up">
+                        <a href="#">
+                            <div class="blog-card-image">
+                                <img src="images/lal_brand.jpg" alt="A close-up of the quality fabric and stitching">
+                            </div>
+                            <div class="blog-card-content">
+                                <p class="blog-card-meta">Hagayya 28, 2024 • Qulqullina</p>
+                                <h3>Waadaa Keenya: Qulqullina Hojii Hunduma Keessatti</h3>
+                                <p>Diizaayiniin keenya tokkoon tokkoon isaa qulqullinaaf xiyyeeffannoo addaa kenna. Fo'aa jirbii filatamoo irraa kaasee, hanga xumuraatti harka oggeeyyii muuxannoo qabaniin hojjetama...</p>
+                                <span class="read-more">Caalmaa Dubbisi →</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="blog-card hidden-anim fade-in-up">
+                        <a href="#">
+                            <div class="blog-card-image">
+                                <img src="images/lal_home.jpg" alt="Oromo cultural textiles used as home decor">
+                            </div>
+                            <div class="blog-card-content">
+                                <p class="blog-card-meta">Adoolessa 10, 2024 • Aadaa & Jireenya</p>
+                                <h3>Aadaa Oromoo Mana Keessanitti Miidhagsuu</h3>
+                                <p>Miidhaginni aadaa Oromoo uffata qofatti kan daangeffame miti. Barruu kana keessatti, akkaataa itti faaya aadaa keenyaa meeshaalee manaa gochuun ho'ina itti laattu baradhaa...</p>
+                                <span class="read-more">Caalmaa Dubbisi →</span>
+                            </div>
+                        </a>
+                    </article>
+                     <article class="blog-card hidden-anim fade-in-up">
+                        <a href="#">
+                            <div class="blog-card-image">
+                                <img src="images/lal_home2.jpg" alt="Colorful patterns representing Oromia">
+                            </div>
+                            <div class="blog-card-content">
+                                <p class="blog-card-meta">Waxabajjii 05, 2024 • Aadaa</p>
+                                <h3>Bifawwan Oromiyaa: Ka'umsa Ilhamii Keenyaa</h3>
+                                <p>Bifti hunduu hiika qaba. Gurraachi, diimaan, fi adiin aadaa Oromoo keessatti hiika maalii akka qaban, fi akkamitti uummanni Oromiyaa diizaayinii keenyaaf ilhama akka ta'e baradhaa...</p>
+                                <span class="read-more">Caalmaa Dubbisi →</span>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <!-- Footer content remains consistent -->
+    </footer>
+
+    <nav class="mobile-bottom-nav">
+        <!-- Mobile nav content remains consistent -->
+    </nav>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- SCROLL-IN ANIMATION SCRIPT ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-anim');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const hiddenElements = document.querySelectorAll('.hidden-anim');
+        hiddenElements.forEach((el) => observer.observe(el));
+    });
+    </script>
+</body>
+</html>

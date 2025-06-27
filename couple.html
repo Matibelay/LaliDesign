@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uffata Aadaa Jaalalleewwanii - Lali Design</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- General Gallery Styles (Reusable) --- */
+        .product-gallery {
+            width: 100%;
+        }
+
+        .gallery__main-image-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .gallery__main-image {
+            width: 100%;
+            max-height: 500px; /* Increased for main product */
+            object-fit: contain;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .gallery__thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center; /* Center thumbnails */
+            flex-wrap: wrap;
+        }
+
+        .gallery__thumbnail {
+            width: 70px;
+            height: 70px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .gallery__thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery__thumbnail.active {
+            border-color: #007bff;
+        }
+
+        .gallery__arrow {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery__arrow:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .gallery__arrow--prev {
+            left: 15px;
+        }
+
+        .gallery__arrow--next {
+            right: 15px;
+        }
+
+        /* --- Styles for Product Cards in Grids --- */
+        .product-card .gallery__main-image {
+            max-height: 300px; /* Smaller height for cards */
+        }
+
+        .product-card .gallery__thumbnails {
+            margin-top: 10px;
+            gap: 5px;
+        }
+        
+        .product-card .gallery__thumbnail {
+            width: 50px;
+            height: 50px;
+        }
+
+        .product-card .gallery__arrow {
+            width: 30px;
+            height: 30px;
+            opacity: 0; 
+            visibility: hidden;
+        }
+
+        .product-card:hover .gallery__arrow {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Style for couple size options */
+        .couple-size-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Header from index.html -->
+    <header class="main-header">
+        <div class="header-container container">
+            <a href="index.html" class="logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="mega-menu-trigger"><a href="shop.html" class="active">Shop <i class="fas fa-chevron-down fa-xs"></i></a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                 <a href="account.html" class="user-account" aria-label="Account"><i class="far fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">1</span></a>
+                <button class="mobile-menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a> > 
+                <a href="index.html">Shop</a> > 
+                <span>Couple's Collection</span>
+            </div>
+        </div>
+
+        <section class="product-detail">
+            <div class="container">
+                <!-- Main Product Gallery -->
+                <div class="product-gallery">
+                    <div class="gallery__main-image-wrapper">
+                        <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <img src="images/couple/couple1.jpg" alt="Oromo couple cultural attire main view" class="gallery__main-image">
+                        <button class="gallery__arrow gallery__arrow--next" aria-label="Next image">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="gallery__thumbnails">
+                        <div class="gallery__thumbnail active" data-image-src="images/couple/couple1.jpg">
+                            <img src="images/couple/couple1.jpg" alt="Couple cultural attire thumbnail 1">
+                        </div>
+                        <div class="gallery__thumbnail" data-image-src="images/couple/couple2.jpg">
+                            <img src="images/couple/couple2.jpg" alt="Couple cultural attire thumbnail 2">
+                        </div>
+                        <div class="gallery__thumbnail" data-image-src="images/couple/couple11.jpg">
+                            <img src="images/couple/couple11.jpg" alt="Couple cultural attire thumbnail 3">
+                        </div>
+                        <div class="gallery__thumbnail" data-image-src="images/couple/couple4.jpg">
+                            <img src="images/couple/couple4.jpg" alt="Couple cultural attire thumbnail 4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-info-main">
+                    <h1>Kitta Aadaa Walooma Jaalalaa</h1>
+                    <p class="product-price-main">12,000 ETB (Set)</p>
+                    <p class="product-description">Uffata aadaa Oromoo jaalalleewwaniif qophaa'e kan wal simu. Guyyaa cidhaa, kaadhimaa, fi ayyaanota adda addaaf bareedina addaa isiniif kenna. Hojii harkaa qulqullina olaanaa qabu.</p>
+                    
+                    <form>
+                        <div class="couple-size-options">
+                            <div class="option-group">
+                                <label for="size_her">Size (Bride / Ishee)</label>
+                                <div class="size-options">
+                                    <input type="radio" name="size_her" id="size-her-s" value="s" checked><label for="size-her-s">S</label>
+                                    <input type="radio" name="size_her" id="size-her-m" value="m"><label for="size-her-m">M</label>
+                                    <input type="radio" name="size_her" id="size-her-l" value="l"><label for="size-her-l">L</label>
+                                </div>
+                            </div>
+                             <div class="option-group">
+                                <label for="size_his">Size (Groom / Isaa)</label>
+                                <div class="size-options">
+                                    <input type="radio" name="size_his" id="size-his-m" value="m" checked><label for="size-his-m">M</label>
+                                    <input type="radio" name="size_his" id="size-his-l" value="l"><label for="size-his-l">L</label>
+                                    <input type="radio" name="size_his" id="size-his-xl" value="xl"><label for="size-his-xl">XL</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="quantity">Quantity (Sets)</label>
+                            <div class="quantity-selector">
+                                <button type="button" class="quantity-minus">-</button>
+                                <input type="number" id="quantity" value="1" min="1">
+                                <button type="button" class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-actions-main">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <button type="button" class="btn btn-secondary">Add to Wishlist</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-detail">
+            <div class="container">
+                <div class="product-gallery">
+                    <div class="gallery__main-image-wrapper">
+                        <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <img src="images/couple/couple5.jpg" alt="Modern Oromo couple wedding attire" class="gallery__main-image">
+                        <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="gallery__thumbnails">
+                        <div class="gallery__thumbnail active" data-image-src="images/couple/couple5.jpg"><img src="images/couple/couple5.jpg" alt="Wedding attire thumbnail 1"></div>
+                        <div class="gallery__thumbnail" data-image-src="images/couple/couple6.jpg"><img src="images/couple/couple6.jpg" alt="Wedding attire thumbnail 2"></div>
+                        <div class="gallery__thumbnail" data-image-src="images/couple/couple7.jpg"><img src="images/couple/couple7.jpg" alt="Wedding attire thumbnail 3"></div>
+                        <div class="gallery__thumbnail" data-image-src="images/couple/couple8.jpg"><img src="images/couple/couple8.jpg" alt="Wedding attire thumbnail 4"></div>
+                    </div>
+                </div>
+                
+                <div class="product-info-main">
+                    <h1>Kitta Cidhaa Ammayyaa</h1>
+                    <p class="product-price-main">15,500 ETB (Set)</p>
+                    <p class="product-description">Aadaan keenya miidhagina keenya. Uuffannii aadaa wal-faana uffatamu guyyaa addaa keessan caalatti bareecha. Diizaayinii ammayyaa fi aadaa walitti makuun kan hojjetame.</p>
+                    
+                     <form>
+                        <div class="couple-size-options">
+                            <div class="option-group">
+                                <label for="size_her2">Size (Bride / Ishee)</label>
+                                <div class="size-options">
+                                    <input type="radio" name="size_her2" id="size-her2-s" value="s" checked><label for="size-her2-s">S</label>
+                                    <input type="radio" name="size_her2" id="size-her2-m" value="m"><label for="size-her2-m">M</label>
+                                    <input type="radio" name="size_her2" id="size-her2-l" value="l"><label for="size-her2-l">L</label>
+                                </div>
+                            </div>
+                             <div class="option-group">
+                                <label for="size_his2">Size (Groom / Isaa)</label>
+                                <div class="size-options">
+                                    <input type="radio" name="size_his2" id="size-his2-m" value="m" checked><label for="size-his2-m">M</label>
+                                    <input type="radio" name="size_his2" id="size-his2-l" value="l"><label for="size-his2-l">L</label>
+                                    <input type="radio" name="size_his2" id="size-his2-xl" value="xl"><label for="size-his2-xl">XL</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="quantity2">Quantity (Sets)</label>
+                            <div class="quantity-selector">
+                                <button type="button" class="quantity-minus">-</button>
+                                <input type="number" id="quantity2" value="1" min="1">
+                                <button type="button" class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-actions-main">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <button type="button" class="btn btn-secondary">Add to Wishlist</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-products section-padding" style="background-color: var(--bg-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Kolekshiniiwwan Biroo Filataman</h2>
+                </div>
+                <div class="product-grid">
+
+                    <!-- Related Product Card 1 -->
+                    <div class="product-card">
+                        <div class="product-gallery">
+                            <div class="gallery__main-image-wrapper">
+                                <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                                <img src="images/couple/couple9.jpg" alt="Elegant black couple attire" class="gallery__main-image">
+                                <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="gallery__thumbnails">
+                                <div class="gallery__thumbnail active" data-image-src="images/couple/couple9.jpg"><img src="images/couple/couple9.jpg" alt="Black attire thumbnail 1"></div>
+                                <div class="gallery__thumbnail" data-image-src="images/couple/couple10.jpg"><img src="images/couple/couple10.jpg" alt="Black attire thumbnail 2"></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Kitta Gurraacha Bareedaa</h3>
+                            <div class="product-price">14,000 ETB (Set)</div>
+                            <a href="couple.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Related Product Card 2 -->
+                    <div class="product-card">
+                        <div class="product-gallery">
+                            <div class="gallery__main-image-wrapper">
+                                <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                                <img src="images/couple/couple11.jpg" alt="Casual Oromo couple outfit" class="gallery__main-image">
+                                <button class="gallery__arrow gallery__arrow--next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="gallery__thumbnails">
+                                <div class="gallery__thumbnail active" data-image-src="images/couple/couple11.jpg"><img src="images/couple/couple11.jpg" alt="Casual outfit thumbnail 1"></div>
+                                <div class="gallery__thumbnail" data-image-src="images/couple/couple12.jpg"><img src="images/couple/couple12.jpg" alt="Casual outfit thumbnail 2"></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Uffata Guyyaa Guyyaa</h3>
+                            <div class="product-price">9,500 ETB (Set)</div>
+                            <a href="couple.html" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer from index.html -->
+    <footer class="main-footer">
+        <!-- ... footer content ... -->
+    </footer>
+    <nav class="mobile-bottom-nav">
+        <!-- ... mobile nav content ... -->
+    </nav>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- REUSABLE IMAGE GALLERY SCRIPT ---
+        function initializeGallery(galleryElement) {
+            const mainImage = galleryElement.querySelector('.gallery__main-image');
+            const thumbnails = galleryElement.querySelectorAll('.gallery__thumbnail');
+            const prevBtn = galleryElement.querySelector('.gallery__arrow--prev');
+            const nextBtn = galleryElement.querySelector('.gallery__arrow--next');
+            
+            if (!mainImage || thumbnails.length === 0) {
+                return;
+            }
+
+            let currentIndex = 0;
+            thumbnails.forEach((thumb, index) => {
+                if (thumb.classList.contains('active')) {
+                    currentIndex = index;
+                }
+            });
+
+            function updateGallery(index) {
+                const newSrc = thumbnails[index].dataset.imageSrc;
+                if (!newSrc) return;
+
+                mainImage.style.opacity = '0';
+                setTimeout(() => {
+                    mainImage.src = newSrc;
+                    mainImage.alt = thumbnails[index].querySelector('img').alt.replace('thumbnail', 'view');
+                    mainImage.style.opacity = '1';
+                }, 150);
+                
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnails[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', () => {
+                    updateGallery(index);
+                });
+            });
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let newIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+                    updateGallery(newIndex);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    let newIndex = (currentIndex + 1) % thumbnails.length;
+                    updateGallery(newIndex);
+                });
+            }
+        }
+
+        const allGalleries = document.querySelectorAll('.product-gallery');
+        allGalleries.forEach(gallery => {
+            initializeGallery(gallery);
+        });
+
+        // --- OTHER PAGE SCRIPTS ---
+        document.querySelectorAll('.quantity-selector').forEach(selector => {
+            const minusBtn = selector.querySelector('.quantity-minus');
+            const plusBtn = selector.querySelector('.quantity-plus');
+            const input = selector.querySelector('input[type="number"]');
+
+            minusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(input.value);
+                if (currentValue > 1) {
+                    input.value = currentValue - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(input.value);
+                input.value = currentValue + 1;
+            });
+        });
+    });
+    </script>
+</body>
+</html>
