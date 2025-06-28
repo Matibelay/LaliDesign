@@ -11,80 +11,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- Styles for Hero Slogan Animation --- */
+        /* HERO SECTION FIX */
+        .hero {
+            position: relative;
+            display: flex; /* Use flexbox for alignment */
+            align-items: flex-end; /* Align content to the bottom */
+            width: 100%;
+            height: 90vh; /* Adjust height as needed */
+            min-height: 500px;
+            color: white;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
         .hero-content {
-            /* Position content at the bottom */
-            justify-content: flex-end;
-            padding-bottom: 80px;
-            text-align: left; /* <<< THE ONLY CHANGE IS HERE */
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding-bottom: 60px; /* Spacing from bottom */
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
         }
-
-        .hero-slogans {
-            min-height: 100px; /* Prevent layout shift */
-        }
-
+        .hero-slogans { min-height: 80px; }
         #hero-slogan-text {
             display: inline-block;
-            font-size: 2.5rem; /* Larger font size */
+            font-size: 2.5rem;
             font-weight: 700;
             font-family: 'Playfair Display', serif;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             transition: opacity 0.7s ease-in-out;
             opacity: 0;
         }
+        #hero-slogan-text.visible { opacity: 1; }
 
-        #hero-slogan-text.visible {
-            opacity: 1;
-        }
-
-        /* --- Styles for Scroll Animation --- */
-        .hidden-anim {
+        /* Other Styles */
+        .hidden-anim { opacity: 0; transition: opacity 1s ease, transform 1s ease; }
+        .slide-in-left { transform: translateX(-50px); }
+        .slide-in-right { transform: translateX(50px); }
+        .show-anim { opacity: 1; transform: translateX(0); }
+        .product-card:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .occasion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .occasion-card { position: relative; overflow: hidden; border-radius: 8px; min-height: 350px; display: flex; align-items: flex-end; text-decoration: none; color: white; transition: transform 0.3s ease; }
+        .occasion-card:hover { transform: scale(1.05); }
+        .occasion-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.4s ease; }
+        .occasion-card:hover img { transform: scale(1.1); }
+        .occasion-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%); z-index: 2; }
+        .occasion-card-content { position: relative; z-index: 3; padding: 25px; }
+        .occasion-card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 5px; }
+        
+        /* MOBILE MENU OVERLAY */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999; /* Below menu, above content */
             opacity: 0;
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            visibility: hidden;
+            transition: opacity 0.4s ease;
         }
-        .slide-in-left {
-            transform: translateX(-50px);
-        }
-        .slide-in-right {
-            transform: translateX(50px);
-        }
-        .show-anim {
+        .mobile-menu-overlay.active {
             opacity: 1;
-            transform: translateX(0);
+            visibility: visible;
         }
 
-        /* --- Enhanced Product Card Hover --- */
-        .product-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .product-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            #hero-slogan-text {
-                font-size: 1.8rem;
-            }
-            .hero-content {
-                padding-bottom: 60px;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- NEW: Mobile Menu Overlay DIV -->
+    <div class="mobile-menu-overlay"></div>
 
     <header class="main-header">
         <div class="header-container container">
             <a href="index.html" class="logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
-            
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li class="mega-menu-trigger">
-                        <a href="women.html">Women's <i class="fas fa-chevron-down fa-xs"></i></a>
+                        <a href="shop.html">Gabaa <i class="fas fa-chevron-down fa-xs"></i></a>
                         <div class="mega-menu">
                             <div class="mega-menu-column">
                                 <h4>Gosaan</h4>
@@ -93,6 +99,9 @@
                                     <li><a href="men.html">Kan Dhiirotaa</a></li>
                                     <li><a href="child.html">Kan Daa'immanii</a></li>
                                     <li><a href="couple.html">Kan Jaalalleewwanii</a></li>
+                                    <li><a href="ulfa.html">Kan Dubartoota Ulfaa</a></li>
+                                    <li><a href="#">Kan Cidhaa</a></li>
+                                    <li><a href="#">Faaya Aadaa (Accessories)</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
@@ -101,7 +110,6 @@
                                     <li><a href="#">Uffata Shawaa</a></li>
                                     <li><a href="#">Faaya Arsii</a></li>
                                     <li><a href="#">Tolama Wallaggaa</a></li>
-                                    <li><a href="#">Aadaa Baalee</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
@@ -119,31 +127,21 @@
                     <li><a href="contact.html">Nu Qunnami</a></li>
                 </ul>
             </nav>
-            
             <div class="header-icons">
                 <button class="search-toggle" aria-label="Search"><i class="fas fa-search"></i></button>
                 <a href="account.html" class="user-account" aria-label="Account"><i class="far fa-user"></i></a>
-                <a href="cart.html" class="cart-icon" aria-label="Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count">1</span>
-                </a>
-                <button class="mobile-menu-toggle" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <a href="cart.html" class="cart-icon" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">1</span></a>
+                <button class="mobile-menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-video">
-                <video autoplay muted loop playsinline poster="images/laldf.jpg">
-                    <source src="lal.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="hero-content container">
-                <div class="hero-slogans">
-                    <span id="hero-slogan-text"></span>
+            <video autoplay muted loop playsinline class="hero-video" poster="images/laldf.jpg"><source src="lal.mp4" type="video/mp4"></video>
+            <div class="hero-content">
+                <div class="container">
+                    <div class="hero-slogans"><span id="hero-slogan-text"></span></div>
                 </div>
             </div>
         </section>
@@ -156,83 +154,54 @@
                 </div>
                 <div class="product-grid">
                      <div class="product-card">
-                        <a href="women.html" class="product-image-link">
-                            <div class="product-image">
-                                <img src="images/lal_shawa.jpg" alt="Uffata Aadaa Godinaalee">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="women.html"><h3>Uffata Aadaa Samaranni</h3></a>
-                            <p class="product-price">Albuuda 2000 ETB</p>
-                        </div>
+                        <a href="women.html" class="product-image-link"><div class="product-image"><img src="images/lal_shawa.jpg" alt="Uffata Aadaa Samaranni"></div></a>
+                        <div class="product-info"><a href="women.html"><h3>Uffata Aadaa Samaranni</h3></a><p class="product-price">2000 ETB</p></div>
                     </div>
                      <div class="product-card">
-                        <a href="famous.html" class="product-image-link">
-                            <div class="product-image">
-                                <img src="images/lal_sol2.jpg" alt="Maamiltoota Beekamoo">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="famous.html"><h3>Maamiltoota Beekamoo</h3></a>
-                            <p class="product-price">Albuuda 5000 ETB</p>
-                        </div>
+                        <a href="famous.html" class="product-image-link"><div class="product-image"><img src="images/lal_sol2.jpg" alt="Maamiltoota Beekamoo"></div></a>
+                        <div class="product-info"><a href="famous.html"><h3>Maamiltoota Beekamoo</h3></a><p class="product-price">5000 ETB</p></div>
                     </div>
                      <div class="product-card">
-                        <a href="child.html" class="product-image-link">
-                            <div class="product-image">
-                                <img src="images/lal_child3.jpg" alt="Uffata Daa'immanii">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="child.html"><h3>Kan Daa'immanii</h3></a>
-                            <p class="product-price">Albuuda 2000 ETB</p>
-                        </div>
+                        <a href="child.html" class="product-image-link"><div class="product-image"><img src="images/lal_child3.jpg" alt="Uffata Daa'immanii"></div></a>
+                        <div class="product-info"><a href="child.html"><h3>Kan Daa'immanii</h3></a><p class="product-price">2000 ETB</p></div>
                     </div>
                      <div class="product-card">
-                        <a href="couple.html" class="product-image-link">
-                            <div class="product-image">
-                                <img src="images/lal_couple.jpg" alt="Uffata Jaalalleewwanii">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="couple.html"><h3>Kan Jaalalleewwanii</h3></a>
-                            <p class="product-price">Albuuda 20,000 ETB</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <a href="ulfa.html" class="product-image-link">
-                            <div class="product-image">
-                                <img src="images/ulfa/ulfa3.jpg" alt="Uffata Dubartii Ulfaa">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="ulfa.html"><h3>Warra Ulfaa</h3></a>
-                            <p class="product-price">Albuuda 2500 ETB</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <a href="men.html" class="product-image-link">
-                            <div class="product-image">
-                                <img src="images/boy/boy1.jpg" alt="Uffata Dhiirotaa">
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="men.html"><h3>Kan Dhiirotaa</h3></a>
-                            <p class="product-price">Albuuda 3000 ETB</p>
-                        </div>
+                        <a href="couple.html" class="product-image-link"><div class="product-image"><img src="images/lal_couple.jpg" alt="Uffata Jaalalleewwanii"></div></a>
+                        <div class="product-info"><a href="couple.html"><h3>Kan Jaalalleewwanii</h3></a><p class="product-price">20,000 ETB</p></div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="shop-by-occasion section-padding" style="background-color: var(--bg-light);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Gosa Ayyaanaatiin Filadhaa</h2>
+                    <p>Guyyaa addaa keessaniif uffata mijaa'aa argadhaa</p>
+                </div>
+                <div class="occasion-grid">
+                    <a href="#" class="occasion-card"><img src="images/couple/couple9.jpg" alt="Wedding Attire"><div class="occasion-card-overlay"></div><div class="occasion-card-content"><h3>Kan Cidhaaf</h3></div></a>
+                    <a href="#" class="occasion-card"><img src="images/girls/girls1.jpg" alt="Holiday Attire"><div class="occasion-card-overlay"></div><div class="occasion-card-content"><h3>Kan Ayyaanotaaf</h3></div></a>
+                    <a href="#" class="occasion-card"><img src="images/famous/famous1.jpg" alt="Graduation Attire"><div class="occasion-card-overlay"></div><div class="occasion-card-content"><h3>Kan Eebbaaf</h3></div></a>
+                </div>
+            </div>
+        </section>
         
-        <section class="about-section section-padding" style="background-color: var(--bg-light);">
+        <section class="about-section section-padding">
              <div class="container">
                  <div class="about-story">
                     <div class="story-content hidden-anim slide-in-left">
-                        <h2>Seenaa Ka'umsa Keenya</h2>
-                        <p><strong>Gadi-jedhinnaan Eegalle...</strong><br> Laalii Diizaayin, kan hundeeffame bara 2010 diizaayinara Lalisee Mulugetaan, Finfinneetti hojii xiqqaadhaan eegale. Kaayyoon Lalisee riiqicha aartii uffata aadaa Oromoo fi faashinii ammayyaa gidduutti ijaaruu ture.</p>
-                        <p>Hojiin jaalalarratti hundaa'ee eegalame kun, aadaa ofii kunuunsuuf ture; har'a garuu dhaabbata hawaasummaa guddatee dagaage ta'uun, Oromiyaa keessatti hojjettoota harkaa 50 ol deeggaraa jira.</p>
-                        <a href="about.html" class="btn btn-primary">Waa'ee Keenya Caalmaa Dubbisi</a>
+                        <h2>Tajaajila Keenya</h2>
+                        <p><strong>Qulqullinaa:</strong> Hojii keenya hunda keessatti qulqullina olaanaadhaaf iddoo guddaa kennina. Fo'aa fi jirbii filatamoo qofa fayyadamna.</p>
+                        <p><strong>Diizaayinii Addaa:</strong> Aadaa keenya isa qaalii ammayyummaadhaan wal-simsiifnee, diizaayiniiwwan yeroon hin daangessine kan eenyummaa keessan ibsan isiniif dhiheessina.</p>
+                        <p><strong>Tajaajila Yeroon:</strong> Hojii ajajamtan yeroo isiniif galletti xumurree isin biraan geenya. Uffata gurguruu qofa osoo hin taane, ayyaanota adda addaatiif ni kireessinas.</p>
+                        <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
+                        <p>
+                            <strong><i class="fas fa-map-marker-alt"></i> Magaalaa Shaggar:</strong> Fuullee Waajjira Bulchiinsa Buraayyuutti, Suuqii Lakk. 2<br>
+                            <strong><i class="fas fa-map-marker-alt"></i> Finfinnee:</strong> Kutaa Gulaaleetti<br>
+                            <strong><i class="fas fa-phone-alt"></i> Bilbila:</strong> +251 92 318 3858<br>
+                            <strong><i class="fab fa-telegram-plane"></i> Telegram:</strong> <a href="https://t.me/lalidesignb" target="_blank">@lalidesignb</a>
+                        </p>
                     </div>
                     <div class="story-image hidden-anim slide-in-right">
                         <img src="images/lal_lali1.jpg" alt="Lali Design Artisan at work" loading="lazy">
@@ -240,19 +209,19 @@
                 </div>
              </div>
         </section>
-
     </main>
 
+    <!-- THE COMPLETE FOOTER SECTION -->
     <footer class="main-footer">
-         <div class="container">
+        <div class="container">
             <div class="footer-grid">
                 <div class="footer-col footer-about">
                     <a href="index.html" class="footer-logo"><img src="images/lal_logo.jpg" alt="Lali Design Logo"></a>
-                    <p>Aadaa Oromoo faashinii ammayyaatiin dubbachuu.</p>
+                    <p>Aadaa Oromoo faashinii ammayyaatiin .</p>
                     <div class="footer-social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://t.me/lalidesignb" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -261,70 +230,79 @@
                         <li><a href="girls.html">Kan Dubartootaa</a></li>
                         <li><a href="men.html">Kan Dhiirotaa</a></li>
                         <li><a href="child.html">Kan Daa'immanii</a></li>
+                        <li><a href="couple.html">Kan Jaalalleewwanii</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Odeeffannoo</h3>
                     <ul>
                         <li><a href="about.html">Waa'ee Keenya</a></li>
-                        <li><a href="#">Hojjettoota Keenya</a></li>
+                        <li><a href="blog.html">Barruu</a></li>
                         <li><a href="contact.html">Nu Qunnami</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Tajaajila Maamilaa</h3>
+                    <h3>Nu Qunnami</h3>
                     <ul>
-                        <li><a href="#">Geejjibaa & Deebii</a></li>
-                        <li><a href="#">Imaammata Mateenyaa</a></li>
-                        <li><a href="#">Seeraa & Haaloota</a></li>
+                        <li><i class="fas fa-phone-alt"></i> +251 92 318 3858</li>
+                        <li><i class="fas fa-envelope"></i> info@lalidesign.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Finfinnee, Gulaale</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Lali Design. Mirgi hunduu seeraan eegamaadha.</p>
+                <p>© 2024 Lali Design. Mirgi hunduu seeraan eegamaadha.</p>
             </div>
         </div>
     </footer>
-
-    <nav class="mobile-bottom-nav">
-    </nav>
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const slogans = [
-            "Aadaa Keenyatu Bareedina Keenya",
-            "Eenyummaa Keessan Kabajaa",
-            "Faaya Aadaa Ammayyummaadhaan",
-            "Dhalootaaf Kan Darbu",
-            "Laalii Diizaayin: Qalbii Oromoo"
-        ];
-        let currentSloganIndex = 0;
-        const sloganElement = document.getElementById('hero-slogan-text');
+        
+        // UNIVERSAL MOBILE MENU SCRIPT
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const body = document.body;
+        const menuOverlay = document.querySelector('.mobile-menu-overlay');
 
-        function changeSlogan() {
-            sloganElement.classList.remove('visible');
-            setTimeout(() => {
-                currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
-                sloganElement.textContent = slogans[currentSloganIndex];
-                sloganElement.classList.add('visible');
-            }, 700);
-        }
-
-        sloganElement.textContent = slogans[0];
-        sloganElement.classList.add('visible');
-
-        setInterval(changeSlogan, 4000);
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show-anim');
+        if (mobileMenuToggle && mainNav && menuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('mobile-nav-active');
+                menuOverlay.classList.toggle('active');
+                body.classList.toggle('no-scroll');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (mainNav.classList.contains('mobile-nav-active')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
                 }
             });
-        });
+            menuOverlay.addEventListener('click', () => mobileMenuToggle.click());
+        }
 
-        const hiddenElements = document.querySelectorAll('.hidden-anim');
-        hiddenElements.forEach((el) => observer.observe(el));
+        // HERO SLOGAN ROTATOR
+        const slogans = ["Aadaa Keenyatu Bareedina Keenya", "Eenyummaa Keenya Mallatto Keenya", "Faaya Aadaa Ammayyummaadhaan", "Laalii Diizaayin: Qalbii Oromoo"];
+        let currentSloganIndex = 0;
+        const sloganElement = document.getElementById('hero-slogan-text');
+        if (sloganElement) {
+            function changeSlogan() {
+                sloganElement.classList.remove('visible');
+                setTimeout(() => {
+                    currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
+                    sloganElement.textContent = slogans[currentSloganIndex];
+                    sloganElement.classList.add('visible');
+                }, 700);
+            }
+            sloganElement.textContent = slogans[0];
+            sloganElement.classList.add('visible');
+            setInterval(changeSlogan, 4000);
+        }
+
+        // SCROLL-IN ANIMATION
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-anim'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.hidden-anim').forEach(el => observer.observe(el));
     });
     </script>
 </body>
